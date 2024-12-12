@@ -28,8 +28,7 @@ def get_corrections(error_angle_deg: float, error_magnitude: float) -> np.ndarra
         [-math.sin(error_angle_rads), math.cos(error_angle_rads)],
     ])
 
-    if np.linalg.det(z_rotation) == 1 or np.linalg.det(z_rotation) == -1: 
-        return z_rotation @ xy_components
-    raise ValueError("Incorrect angle leading to a determinant that's not 1 or -1")
+    return z_rotation @ xy_components
+    
 
 print(get_corrections(3,5))
