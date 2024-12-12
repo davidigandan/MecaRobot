@@ -1,7 +1,7 @@
 import math
 import numpy as np
 
-def get_corrections(error_angle_deg, error_magnitude):
+def get_corrections(error_angle_deg: float, error_magnitude: float) -> np.ndarray:
     """
     Computes the components of the correction in XY plane
 
@@ -14,9 +14,7 @@ def get_corrections(error_angle_deg, error_magnitude):
 
     Raises:
     ValueError: If the determinant of the rotation matrix is not 1 or -1, indicating an invalid rotation matrix.
-
-"""
-    
+    """    
     error_angle_rads = error_angle_deg * math.pi / 180
     xy_components = np.array(
         [
@@ -33,3 +31,4 @@ def get_corrections(error_angle_deg, error_magnitude):
     if np.linalg.det(z_rotation) == 1 or np.linalg.det(z_rotation) == -1: 
         return z_rotation @ xy_components
     raise ValueError("Incorrect angle leading to a determinant that's not 1 or -1")
+
