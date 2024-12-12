@@ -15,7 +15,7 @@ def get_corrections(error_angle_deg: float, error_magnitude: float) -> np.ndarra
     Raises:
     ValueError: If the determinant of the rotation matrix is not 1 or -1, indicating an invalid rotation matrix.
     """    
-    error_angle_rads = error_angle_deg * math.pi / 180
+    error_angle_rads = math.radians(error_angle_deg)
     xy_components = np.array(
         [
             [error_magnitude * math.cos(error_angle_rads)],
@@ -32,3 +32,4 @@ def get_corrections(error_angle_deg: float, error_magnitude: float) -> np.ndarra
         return z_rotation @ xy_components
     raise ValueError("Incorrect angle leading to a determinant that's not 1 or -1")
 
+print(get_corrections(3,5))
